@@ -6,9 +6,13 @@ filepath = 'TodoLists.txt'
 todos = functions.imporData(filepath)
 
 def tambah_todo():
-    todo = st.session_state['todo'] + '\n'
-    todos.append(todo)
-    functions.eksporData(filepath, todos)
+    # Check if the input is not empty
+    if st.session_state['todo']:
+        todo = st.session_state['todo'] + '\n'
+        todos.append(todo)
+        functions.eksporData(filepath, todos)
+        # Clear the input field
+        st.session_state['todo'] = ''
 
 st.title("Todo List Program")
 st.subheader("By Ahmad Fauzan")
@@ -26,7 +30,4 @@ with st.container(border=True):
 st.divider()
 
 st.text_input(label='Masukkan Todo:', placeholder="Ex. Debugging Code", key='todo',
-                     on_change=tambah_todo)
-
-
-
+              on_change=tambah_todo)
