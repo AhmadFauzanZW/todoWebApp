@@ -31,3 +31,5 @@ st.divider()
 
 st.text_input(label='Masukkan Todo:', placeholder="Ex. Debugging Code", key='todo',
               on_change=tambah_todo)
+
+st.warning("Harap masukkan todo yang berbeda. Jangan masukkan todo yang sama!")
